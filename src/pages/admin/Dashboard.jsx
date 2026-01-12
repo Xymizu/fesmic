@@ -32,7 +32,7 @@ const AdminDashboard = () => {
     try {
       setLoading(true);
 
-      // Mock chart data
+      // TODO: Replace with API calls
       const mockChartData = [
         { month: "Mar", value: 30 },
         { month: "Mar", value: 25 },
@@ -42,14 +42,12 @@ const AdminDashboard = () => {
         { month: "Mar", value: 60 },
       ];
 
-      // Mock top tickets
       const mockTopTickets = mockEvents.slice(0, 6).map((event, i) => ({
         key: i + 1,
         name: event.title,
         sales: 1000 - i * 100,
       }));
 
-      // Mock invoices
       const mockInvoices = mockEvents.slice(0, 7).map((event, i) => ({
         key: i + 1,
         no: `PQ-${950 + i}`,
@@ -101,15 +99,17 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       {/* Stats Cards */}
-      <Row gutter={[24, 24]} className="mb-8">
+      <Row gutter={[16, 16]} className="mb-6 sm:mb-8">
         <Col xs={24} sm={12} lg={6}>
-          <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-white/20 rounded-2xl p-6">
-            <div className="flex items-start justify-between mb-4">
+          <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6">
+            <div className="flex items-start justify-between mb-3 sm:mb-4">
               <div>
-                <p className="text-white/60 text-sm mb-2">Event Total</p>
-                <h2 className="text-white text-4xl font-bold">
+                <p className="text-white/60 text-xs sm:text-sm mb-1 sm:mb-2">
+                  Event Total
+                </p>
+                <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl font-bold">
                   {stats.eventTotal.value}
                 </h2>
               </div>
@@ -125,11 +125,13 @@ const AdminDashboard = () => {
         </Col>
 
         <Col xs={24} sm={12} lg={6}>
-          <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-white/20 rounded-2xl p-6">
-            <div className="flex items-start justify-between mb-4">
+          <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6">
+            <div className="flex items-start justify-between mb-3 sm:mb-4">
               <div>
-                <p className="text-white/60 text-sm mb-2">Ticket Sold</p>
-                <h2 className="text-white text-4xl font-bold">
+                <p className="text-white/60 text-xs sm:text-sm mb-1 sm:mb-2">
+                  Ticket Sold
+                </p>
+                <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl font-bold">
                   {stats.ticketSold.value}
                 </h2>
               </div>
@@ -145,11 +147,13 @@ const AdminDashboard = () => {
         </Col>
 
         <Col xs={24} sm={12} lg={6}>
-          <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-white/20 rounded-2xl p-6">
-            <div className="flex items-start justify-between mb-4">
+          <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6">
+            <div className="flex items-start justify-between mb-3 sm:mb-4">
               <div>
-                <p className="text-white/60 text-sm mb-2">Pending</p>
-                <h2 className="text-white text-4xl font-bold">
+                <p className="text-white/60 text-xs sm:text-sm mb-1 sm:mb-2">
+                  Pending
+                </p>
+                <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl font-bold">
                   {stats.pending.value}
                 </h2>
               </div>
@@ -165,11 +169,13 @@ const AdminDashboard = () => {
         </Col>
 
         <Col xs={24} sm={12} lg={6}>
-          <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-white/20 rounded-2xl p-6">
-            <div className="flex items-start justify-between mb-4">
+          <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6">
+            <div className="flex items-start justify-between mb-3 sm:mb-4">
               <div>
-                <p className="text-white/60 text-sm mb-2">Pending</p>
-                <h2 className="text-white text-4xl font-bold">
+                <p className="text-white/60 text-xs sm:text-sm mb-1 sm:mb-2">
+                  Pending
+                </p>
+                <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl font-bold">
                   {stats.pending2.value}
                 </h2>
               </div>
@@ -186,11 +192,13 @@ const AdminDashboard = () => {
       </Row>
 
       {/* Chart & Top Tickets */}
-      <Row gutter={[24, 24]} className="mb-8">
+      <Row gutter={[16, 16]} className="mb-6 sm:mb-8">
         <Col xs={24} lg={14}>
-          <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-white/20 rounded-2xl p-6 h-full">
-            <h3 className="text-white text-xl font-bold mb-6">Monthly lorem</h3>
-            <ResponsiveContainer width="100%" height={300}>
+          <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 h-full">
+            <h3 className="text-white text-base sm:text-lg lg:text-xl font-bold mb-4 sm:mb-5 lg:mb-6">
+              Monthly lorem
+            </h3>
+            <ResponsiveContainer width="100%" height={250}>
               <BarChart data={chartData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#333" />
                 <XAxis dataKey="month" stroke="#888" />
@@ -202,21 +210,23 @@ const AdminDashboard = () => {
         </Col>
 
         <Col xs={24} lg={10}>
-          <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-white/20 rounded-2xl p-6 h-full">
-            <h3 className="text-white text-xl font-bold mb-6">
+          <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 h-full">
+            <h3 className="text-white text-base sm:text-lg lg:text-xl font-bold mb-4 sm:mb-5 lg:mb-6">
               Top Ticket Sales
             </h3>
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               {topTickets.map((ticket) => (
                 <div
                   key={ticket.key}
-                  className="flex items-center justify-between p-3 bg-black/30 rounded-xl"
+                  className="flex items-center justify-between p-2 sm:p-3 bg-black/30 rounded-lg sm:rounded-xl"
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2 sm:gap-3">
                     <div className="w-2 h-2 bg-white rounded-full" />
-                    <span className="text-white">{ticket.name}</span>
+                    <span className="text-white text-xs sm:text-sm truncate">
+                      {ticket.name}
+                    </span>
                   </div>
-                  <span className="text-white font-semibold">
+                  <span className="text-white font-semibold text-xs sm:text-sm">
                     {ticket.sales}
                   </span>
                 </div>
@@ -227,14 +237,19 @@ const AdminDashboard = () => {
       </Row>
 
       {/* Recent Invoices */}
-      <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-white/20 rounded-2xl p-6">
-        <h3 className="text-white text-xl font-bold mb-6">Recent Invoices</h3>
-        <Table
-          columns={invoiceColumns}
-          dataSource={recentInvoices}
-          pagination={false}
-          className="custom-table"
-        />
+      <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6">
+        <h3 className="text-white text-base sm:text-lg lg:text-xl font-bold mb-4 sm:mb-5 lg:mb-6">
+          Recent Invoices
+        </h3>
+        <div className="overflow-x-auto">
+          <Table
+            columns={invoiceColumns}
+            dataSource={recentInvoices}
+            pagination={false}
+            className="custom-table"
+            scroll={{ x: 800 }}
+          />
+        </div>
       </div>
     </div>
   );

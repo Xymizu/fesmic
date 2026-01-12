@@ -12,8 +12,7 @@ const Login = () => {
     try {
       setLoading(true);
 
-      // Mock authentication - replace dengan API call nanti
-      // Untuk testing: admin@fesmic.com / user@fesmic.com
+      // TODO: Replace with actual API call
       const mockResponse = {
         data: {
           token: "mock-jwt-token-" + Date.now(),
@@ -31,27 +30,13 @@ const Login = () => {
       localStorage.setItem("token", mockResponse.data.token);
       localStorage.setItem("user", JSON.stringify(mockResponse.data.user));
 
-      message.success("Login successful!");
+      message.success("Login berhasil!");
 
-      // Redirect berdasarkan role
       if (mockResponse.data.user.role === "admin") {
         navigate("/admin/dashboard");
       } else {
-        // Redirect ke home page untuk user biasa
-        // User bisa akses dashboard dari navbar
         navigate("/");
       }
-
-      // Uncomment ini nanti untuk production dengan real API:
-      // const response = await authService.login(values);
-      // localStorage.setItem("token", response.data.token);
-      // localStorage.setItem("user", JSON.stringify(response.data.user));
-      // message.success("Login successful!");
-      // if (response.data.user.role === "admin") {
-      //   navigate("/admin/dashboard");
-      // } else {
-      //   navigate("/user/dashboard");
-      // }
     } catch (error) {
       handleApiError(error);
     } finally {
@@ -60,77 +45,43 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-black via-gray-950 to-gray-900 relative overflow-hidden py-8">
-      {/* Animated background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,_rgba(24,144,255,0.15)_0%,_transparent_70%)] animate-pulse pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,_rgba(59,130,246,0.12)_0%,_transparent_60%)] pointer-events-none" />
+    <div className="min-h-screen flex justify-center items-center px-8 bg-gradient-to-br from-black via-gray-950 to-gray-900 relative py-8">
+      <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(24,144,255,0.15)_0%,_transparent_70%)] pointer-events-none" />
 
       <div className="w-full max-w-[500px] relative z-10">
-        <div className="bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-2xl border border-white/20 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 mb-6 sm:mb-8 shadow-2xl hover:shadow-blue-500/10 transition-all duration-500">
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-white text-center mb-2 sm:mb-3 [text-shadow:0_0_40px_rgba(24,144,255,0.5)] tracking-tight">
+        <div className="bg-gray-800/90 border border-white/20 rounded-3xl p-12 mb-8">
+          <h1 className="text-5xl font-extrabold text-white text-center mb-3">
             Fesmic
           </h1>
-          <p className="text-white/50 text-center mb-4 sm:mb-6 text-sm">
-            Sign in to continue
+          <p className="text-white/50 text-center mb-6">
+            Masuk untuk melanjutkan
           </p>
-
-          {/* Testing Info */}
-          <div className="bg-blue-500/10 border border-blue-400/30 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
-            <p className="text-blue-400 text-xs font-semibold mb-2">
-              🧪 Testing Accounts:
-            </p>
-            <p className="text-white/70 text-xs mb-1">
-              👤 User:{" "}
-              <span className="text-white font-mono text-xs break-all">
-                user@fesmic.com
-              </span>
-            </p>
-            <p className="text-white/70 text-xs mb-1">
-              👨‍💼 Admin:{" "}
-              <span className="text-white font-mono text-xs break-all">
-                admin@fesmic.com
-              </span>
-            </p>
-            <p className="text-white/60 text-xs mt-2">
-              Password: <span className="text-white/80">anything</span>
-            </p>
-          </div>
 
           <Form form={form} layout="vertical" onFinish={onFinish}>
             <Form.Item
-              label={
-                <span className="text-white font-medium text-sm sm:text-base">
-                  Email
-                </span>
-              }
+              label={<span className="text-white font-medium">Email</span>}
               name="email"
               rules={[
-                { required: true, message: "Please input your email!" },
-                { type: "email", message: "Please enter a valid email!" },
+                { required: true, message: "Masukkan email!" },
+                { type: "email", message: "Email tidak valid!" },
               ]}
             >
               <Input
-                placeholder="Insert Email.."
+                placeholder="Masukkan email..."
                 size="large"
-                className="!bg-black/40 !border-white/20 rounded-lg h-11 sm:h-12 hover:!border-blue-400/50 focus:!border-blue-400 transition-all duration-300 text-sm sm:text-base"
+                className="!bg-black/40 !border-white/20 h-12"
               />
             </Form.Item>
 
             <Form.Item
-              label={
-                <span className="text-white font-medium text-sm sm:text-base">
-                  Password
-                </span>
-              }
+              label={<span className="text-white font-medium">Password</span>}
               name="password"
-              rules={[
-                { required: true, message: "Please input your password!" },
-              ]}
+              rules={[{ required: true, message: "Masukkan password!" }]}
             >
               <Input.Password
-                placeholder="Insert Password.."
+                placeholder="Masukkan password..."
                 size="large"
-                className="rounded-lg h-11 sm:h-12 hover:!border-blue-400/50 focus:!border-blue-400 transition-all duration-300 text-sm sm:text-base"
+                className="h-12"
               />
             </Form.Item>
 
@@ -140,25 +91,23 @@ const Login = () => {
               block
               size="large"
               loading={loading}
-              className="mt-4 sm:mt-6 h-[48px] sm:h-[52px] rounded-lg text-sm sm:text-base font-bold shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:scale-[1.02] transition-all duration-300"
+              className="mt-6 h-12 font-bold"
             >
-              Log In
+              Masuk
             </Button>
           </Form>
         </div>
 
-        <div className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 border border-white/20 rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center backdrop-blur-lg shadow-xl">
-          <p className="text-white/60 mb-4 sm:mb-5 text-sm sm:text-base">
-            Don't have an account?
-          </p>
+        <div className="bg-gray-800/70 border border-white/20 rounded-3xl p-8 text-center">
+          <p className="text-white/60 mb-5">Belum punya akun?</p>
           <Link to="/register">
             <Button
               type="default"
               block
               size="large"
-              className="h-[48px] sm:h-[52px] rounded-lg text-sm sm:text-base font-bold bg-transparent border-white/30 text-white hover:!bg-white/10 hover:!border-blue-400 hover:!text-blue-400 hover:scale-[1.02] transition-all duration-300"
+              className="h-12 font-bold bg-transparent border-white/30 text-white hover:!bg-white/10"
             >
-              Sign Up
+              Daftar
             </Button>
           </Link>
         </div>

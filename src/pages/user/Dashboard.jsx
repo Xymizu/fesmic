@@ -76,28 +76,30 @@ const UserDashboard = () => {
       </div>
 
       {/* Last Orders */}
-      <div className="mb-12 sm:mb-16">
-        <h2 className="text-white text-3xl font-bold mb-8">Last Orders</h2>
-        <Row gutter={[24, 24]}>
+      <div className="mb-8 sm:mb-12 lg:mb-16">
+        <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold mb-6 sm:mb-7 lg:mb-8">
+          Last Orders
+        </h2>
+        <Row gutter={[16, 16]}>
           {lastOrders.map((order) => (
             <Col key={order.id} xs={24} sm={12} lg={8}>
-              <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-white/20 rounded-2xl overflow-hidden hover:border-blue-400/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/20">
+              <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-white/20 rounded-xl sm:rounded-2xl overflow-hidden hover:border-blue-400/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/20">
                 <img
                   src={order.image}
                   alt={order.eventName}
-                  className="w-full h-[200px] object-cover"
+                  className="w-full h-[160px] sm:h-[180px] lg:h-[200px] object-cover"
                 />
-                <div className="p-6">
-                  <p className="text-white/60 text-sm mb-2">
+                <div className="p-4 sm:p-5 lg:p-6">
+                  <p className="text-white/60 text-xs sm:text-sm mb-2">
                     {order.date} | {order.location}
                   </p>
-                  <h3 className="text-white text-xl font-bold mb-4">
+                  <h3 className="text-white text-base sm:text-lg lg:text-xl font-bold mb-3 sm:mb-4">
                     {order.eventName}
                   </h3>
                   <Button
                     type="default"
                     block
-                    className="rounded-xl h-11 font-semibold bg-transparent border-white/30 text-white hover:!bg-blue-500 hover:!border-blue-500 hover:!text-white transition-all duration-300"
+                    className="rounded-lg sm:rounded-xl h-9 sm:h-10 lg:h-11 font-semibold text-sm sm:text-base bg-transparent border-white/30 text-white hover:!bg-blue-500 hover:!border-blue-500 hover:!text-white transition-all duration-300"
                     onClick={() => navigate(`/user/order-history`)}
                   >
                     Lihat Detail
@@ -111,29 +113,29 @@ const UserDashboard = () => {
 
       {/* Recommended Events */}
       <div>
-        <h2 className="text-white text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">
+        <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold mb-6 sm:mb-7 lg:mb-8">
           Recomended Event
         </h2>
-        <Row gutter={[24, 24]}>
+        <Row gutter={[16, 16]}>
           {recommendedEvents.map((event) => (
             <Col key={event.id} xs={24} sm={12} lg={8}>
-              <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-white/20 rounded-2xl overflow-hidden hover:border-blue-400/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/20">
+              <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-white/20 rounded-xl sm:rounded-2xl overflow-hidden hover:border-blue-400/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/20">
                 <img
                   src={event.image}
                   alt={event.eventName}
-                  className="w-full h-[200px] object-cover"
+                  className="w-full h-[160px] sm:h-[180px] lg:h-[200px] object-cover"
                 />
-                <div className="p-6">
-                  <p className="text-white/60 text-sm mb-2">
+                <div className="p-4 sm:p-5 lg:p-6">
+                  <p className="text-white/60 text-xs sm:text-sm mb-2">
                     {event.date} | {event.location}
                   </p>
-                  <h3 className="text-white text-xl font-bold mb-4">
+                  <h3 className="text-white text-base sm:text-lg lg:text-xl font-bold mb-3 sm:mb-4">
                     {event.eventName}
                   </h3>
                   <Button
                     type="default"
                     block
-                    className="rounded-xl h-11 font-semibold bg-transparent border-white/30 text-white hover:!bg-blue-500 hover:!border-blue-500 hover:!text-white transition-all duration-300"
+                    className="rounded-lg sm:rounded-xl h-9 sm:h-10 lg:h-11 font-semibold text-sm sm:text-base bg-transparent border-white/30 text-white hover:!bg-blue-500 hover:!border-blue-500 hover:!text-white transition-all duration-300"
                     onClick={() => navigate(`/events/${event.id}`)}
                   >
                     Lihat Detail
