@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply m-0 p-0 box-border;
+  }
+
+  body {
+    @apply min-h-screen bg-gradient-to-br from-black via-gray-950 to-black text-white/90;
+    background-attachment: fixed;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+}
+
+@layer components {
+  /* Antd Dark Theme Overrides */
+  .ant-input,
+  .ant-input-password input,
+  .ant-select-selector,
+  .ant-picker {
+    @apply !bg-black/30 !border-white/20 !text-white transition-all duration-300;
+  }
+
+  .ant-input:hover,
+  .ant-input-password input:hover,
+  .ant-select-selector:hover {
+    @apply !border-blue-400/50;
+  }
+
+  .ant-input:focus,
+  .ant-input-password input:focus,
+  .ant-select-focused .ant-select-selector {
+    @apply !border-blue-400 !shadow-lg !shadow-blue-500/20;
+  }
+
+  .ant-input::placeholder,
+  .ant-input-password input::placeholder {
+    @apply !text-white/40;
+  }
+
+  .ant-select-dropdown {
+    @apply !bg-gray-900/95 backdrop-blur-md !border !border-white/20 !shadow-2xl;
+  }
+
+  .ant-select-item {
+    @apply !text-white/85 transition-all duration-200;
+  }
+
+  .ant-select-item-option-selected {
+    @apply !bg-blue-500/30 !font-semibold;
+  }
+
+  .ant-select-item-option-active {
+    @apply !bg-white/10;
+  }
+
+  .ant-slider-track {
+    @apply !bg-blue-500;
+  }
+
+  .ant-slider-handle {
+    @apply !border-blue-500 !shadow-lg !shadow-blue-500/30;
+  }
+
+  .ant-slider-handle:hover {
+    @apply !border-blue-400 !shadow-blue-500/50;
+  }
+
+  .ant-card {
+    @apply !bg-gray-800/80 !border-white/10;
+  }
+
+  .ant-card-body {
+    @apply !p-0;
+  }
+
+  .ant-btn-primary {
+    @apply !bg-gradient-to-r !from-blue-500 !to-blue-600 !border-none !shadow-lg !shadow-blue-500/30;
+  }
+
+  .ant-btn-primary:hover {
+    @apply !bg-gradient-to-r !from-blue-400 !to-blue-500 !shadow-xl !shadow-blue-500/40;
+  }
+
+  .ant-form-item-label > label {
+    @apply !text-white/85 !font-medium;
+  }
+
+  .ant-checkbox-wrapper {
+    @apply !text-white/70;
+  }
+
+  .ant-message {
+    @apply z-[10000];
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2.5 h-2.5;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-black/30;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-white/20 rounded-md hover:bg-white/30 transition-colors;
+  }
+
+  /* Custom Table Styles */
+  .custom-table .ant-table {
+    @apply !bg-transparent;
+  }
+
+  .custom-table .ant-table-thead > tr > th {
+    @apply !bg-gray-800/60 !text-white/70 !border-white/10 !font-semibold;
+  }
+
+  .custom-table .ant-table-tbody > tr > td {
+    @apply !bg-transparent !text-white/85 !border-white/10;
+  }
+
+  .custom-table .ant-table-tbody > tr:hover > td {
+    @apply !bg-white/5;
+  }
+
+  .custom-table .ant-pagination .ant-pagination-item {
+    @apply !bg-gray-800/60 !border-white/20;
+  }
+
+  .custom-table .ant-pagination .ant-pagination-item a {
+    @apply !text-white;
+  }
+
+  .custom-table .ant-pagination .ant-pagination-item-active {
+    @apply !bg-blue-500 !border-blue-500;
+  }
+
+  /* Sidebar Menu */
+  .ant-menu-dark .ant-menu-item-selected {
+    @apply !bg-white/10;
+  }
+
+  .ant-menu-dark .ant-menu-item:hover {
+    @apply !bg-white/5;
+  }
+
+  /* Modal Styles */
+  .custom-modal .ant-modal-content {
+    @apply !bg-gray-900/95 !border !border-white/20 backdrop-blur-2xl;
+  }
+
+  .custom-modal .ant-modal-header {
+    @apply !bg-transparent !border-white/10;
+  }
+
+  .custom-modal .ant-modal-footer {
+    @apply !bg-transparent !border-white/10;
+  }
+}
+
+@layer utilities {
+  /* Custom animations */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out;
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+}
